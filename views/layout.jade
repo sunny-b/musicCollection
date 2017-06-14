@@ -1,7 +1,17 @@
+include /_mixin
+
 doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet")
+    +stylesheet_link_tag('application')
+    +javascript_script_tag('vendor/all')
   body
-    block content
+    main
+      block content
+    +javascript_script_tag('models/album')
+    +javascript_script_tag('collections/albums')
+    +javascript_script_tag('views/album')
+    +javascript_script_tag('application')
+    block scripts
