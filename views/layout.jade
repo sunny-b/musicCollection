@@ -7,11 +7,19 @@ html
     link(href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet")
     +stylesheet_link_tag('application')
     +javascript_script_tag('vendor/all')
+    +javascript_script_tag('handlebars_templates')
   body
+    header
+      #cart
+        
     main
       block content
-    +javascript_script_tag('models/album')
-    +javascript_script_tag('collections/albums')
-    +javascript_script_tag('views/album')
+    
     +javascript_script_tag('application')
+    +javascript_script_tag('models/album')
+    +javascript_script_tag('collections/albums', 'collections/cart_items')
+    +javascript_script_tag('views/album', 'views/new_album', 'views/index', 'views/cart')
+    script(type="text/javascript").
+      App.albums = new Albums(!{JSON.stringify(albums)});
+    +javascript_script_tag('router')
     block scripts
